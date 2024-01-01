@@ -1,7 +1,7 @@
 //  Importar o 'useState': adicionar a componentes funcionais
 import { useState } from 'react';
 //  Incluir os componentes do React-Native
-import { ScrollView, View } from 'react-native';
+import { Alert, ScrollView, View } from 'react-native';
 //  Incluir os Componentes CSS criado com styled componentes
 import { Container, Logo, ImageLogo, List, RowData, Bmi, Classification, InputForm, BtnSubmitForm, TxtSubmitForm } from './app/src/styles/custom';
 
@@ -11,8 +11,24 @@ export default function App() {
   //Criar variáveis de estado
   const [height, setHeight] = useState('');
   const [weight, setWeight] = useState('');
-
   const [bmi, setBmi] = useState('');
+
+  //Função para calcular IMC
+  const calcularBMI = () => {
+    //Converter para um número float
+    const heightFloat = parseFloat(height);
+    const weightFloat = parseFloat(weight);
+
+    if(isNaN(heightFloat) || isNaN(weightFloat) || heightFloat <= 0 || weightFloat <= 0){
+      Alert.alerts('Por favor, insira insira valores válidos para e altura.');
+      return;
+    }
+    
+    //Calcula o índice de massa corporal (IMC)
+    const bmi = weightFloat / Math.pow(heightFloat, 2);
+
+    setBmi("Seu IMC/BMI: " + bmi.toFixed(2));
+  }
 
 
   return (
@@ -39,7 +55,7 @@ export default function App() {
         />
 
         {/**Criar um botão */}
-        <BtnSubmitForm>
+        <BtnSubmitForm onPress={calcularBMI}>
           <TxtSubmitForm>
             Calcular
           </TxtSubmitForm>
