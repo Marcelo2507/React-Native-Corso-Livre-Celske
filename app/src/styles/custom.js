@@ -16,6 +16,31 @@ export const ImageLogo = styled.Image`
     height: 100px;
 `;
 
+export const InputForm = styled.TextInput`
+    background-color: #f5f5f5;
+    width: 90%;
+    margin-bottom: 15px;
+    color: #222;
+    font-size: 18px;
+    border-radius: 6px;
+    padding: 10px;
+`;
+
+export const BtnSubmitForm = styled.TouchableOpacity`
+    background-color: #eb1555;
+    width: 90%;
+    height: 45px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    margin-bottom: 30px;
+`;
+
+export const TxtSubmitForm = styled.Text`
+    color: #f5f5f5;
+    font-size: 22px;
+`;
+
 export const List = styled.View`
     width: 100%;
 `;
